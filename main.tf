@@ -15,14 +15,15 @@ provider "spotify" {
 }
 
 data "spotify_search_track" "by_artist" {
-  artist = "Dolly Parton"
+  artist = "Sami Yusuf"
+  album  = "Al-Mu'allim"
   #  album = "Jolene"
   #  name  = "Early Morning Breeze"
 }
 
-resource "spotify_playlist" "playlist" {
-  name        = "Terraform Summer Playlist"
-  description = "This playlist was created by Terraform"
+resource "spotify_playlist" "nasheed_playlist" {
+  name        = "Terraform Custom Nasheed_Playlist"
+  description = "Maryam created this playlist using Terraform"
   public      = true
 
   tracks = [
@@ -31,3 +32,31 @@ resource "spotify_playlist" "playlist" {
     data.spotify_search_track.by_artist.tracks[2].id,
   ]
 }
+
+resource "spotify_library_albums" "nasheed_quran_album" {
+  albums = [
+    data.spotify_album.nasheed_by_maher_zain.id,
+    data.spotify_album.recitation_by_sudais.id,
+    data.spotify_album.nasheed_by_sami_yusuf.id,
+    data.spotify_album.recitation_by_shatri.id,
+  ]
+}
+
+data "spotify_album" "nasheed_by_maher_zain" {
+  url = "https://open.spotify.com/album/6GU6PmAOKYRsYVJTMlcjJr"
+}
+
+data "spotify_album" "recitation_by_sudais" {
+  spotify_id = "3pEO1wH47Z0EQh7jEWvJIP"
+}
+
+data "spotify_album" "nasheed_by_sami_yusuf" {
+  url = "https://open.spotify.com/album/3FC9MHaKXqQbPxS1Z1Z3Vy"
+}
+
+data "spotify_album" "recitation_by_shatri" {
+  spotify_id = "37bDyMFVmCKM3zwWPX6TLO"
+}
+
+
+
