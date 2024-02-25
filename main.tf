@@ -17,8 +17,6 @@ provider "spotify" {
 data "spotify_search_track" "by_artist" {
   artist = "Sami Yusuf"
   album  = "Al-Muallim"
-  #  album = "Jolene"
-  #  name  = "Early Morning Breeze"
 }
 
 resource "spotify_playlist" "nasheed_playlist" {
