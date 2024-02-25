@@ -16,7 +16,7 @@ provider "spotify" {
 
 data "spotify_search_track" "by_artist" {
   artist = "Sami Yusuf"
-  album  = "Al-Mu'allim"
+  album  = "Al-Muallim"
   #  album = "Jolene"
   #  name  = "Early Morning Breeze"
 }
